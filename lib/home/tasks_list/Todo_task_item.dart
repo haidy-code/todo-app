@@ -9,61 +9,13 @@ class Todo_task_item extends StatelessWidget {
 
   Todo_task_item(this.item);
 
+
   @override
   Widget build(BuildContext context) {
-    return Slidable(
-      child: Container(
-        color: Colors.red,
-        margin: EdgeInsets.symmetric(vertical: 8),
-        child: Container(
-          color: Colors.white,
-          child: Container(
-            height:
-                120, //adet llcontainer height 3shan hwa kan shail height alitems ally gwah(makontsh 3arfa a3ml space evenly fe items ally gwa coloumn)
 
-            padding: EdgeInsets.all(12),
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(12)),
-            child: Row(
-              children: [
-                Container(
-                  height: 60,
-                  width: 4,
-                  color: Theme.of(context).primaryColor,
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            item.title,
-                            style: Theme.of(context).textTheme.headline1,
-                          ),
-                          Text(
-                            item.description,
-                            style: Theme.of(context).textTheme.headline2,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(12)),
-                  child: Image.asset('assets/images/Icon-check.png'),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
+    return Slidable(
+
+      child:getitemdesign(item.isDone,context),
       actionPane: SlidableDrawerActionPane(),
       actions: [
         IconSlideAction(
@@ -127,4 +79,133 @@ class Todo_task_item extends StatelessWidget {
       ],
     );
   }
-}
+  Widget getitemdesign(bool isdone,BuildContext context) {
+    if(isdone){
+      return Container(
+        color: Colors.red,
+        margin: EdgeInsets.symmetric(vertical: 8),
+        child: Container(
+          color: Colors.white,
+          child: Container(
+            height:
+            120, //adet llcontainer height 3shan hwa kan shail height alitems ally gwah(makontsh 3arfa a3ml space evenly fe items ally gwa coloumn)
+
+            padding: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(12)),
+            child: Row(
+              children: [
+                Container(
+                  height: 60,
+                  width: 4,
+                  color: Theme.of(context).primaryColor,
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            item.title,
+                              style: TextStyle(
+                          fontSize:  18,
+                          color: Colors.lightGreen
+                      ),
+                          ),
+                          Text(
+                            item.description,
+                            style: Theme.of(context).textTheme.headline2,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap:() {editisdoneoftask(item,false);
+                    },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).primaryColor,
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Text(
+                      'Done',
+                      style: TextStyle(
+                        fontSize:  18,
+                        color: Colors.lightGreen
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),  //container of whole item
+        ),
+      );
+    }
+    return Container(
+      color: Colors.red,
+      margin: EdgeInsets.symmetric(vertical: 8),
+      child: Container(
+        color: Colors.white,
+        child: Container(
+          height:
+          120, //adet llcontainer height 3shan hwa kan shail height alitems ally gwah(makontsh 3arfa a3ml space evenly fe items ally gwa coloumn)
+
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+              color: Colors.white, borderRadius: BorderRadius.circular(12)),
+          child: Row(
+            children: [
+              Container(
+                height: 60,
+                width: 4,
+                color: Theme.of(context).primaryColor,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          item.title,
+                          style: Theme.of(context).textTheme.headline1,
+                        ),
+                        Text(
+                          item.description,
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: (){
+                  editisdoneoftask(item,true);
+
+                  getitemdesign(item.isDone, context);
+
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(12)),
+                  child: Image.asset('assets/images/Icon-check.png'),
+                ),
+              )
+            ],
+          ),
+        ),  //container of whole item
+      ),
+    );
+  }
+  }

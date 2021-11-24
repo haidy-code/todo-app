@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'Todo.dart';
-//btrag3 aldate as yom w shahr w sana mn 8ar d2e2a w hour w second
+//btrag3 aldate as yom w shahr w sana mn 8ar d2e2a w hour w second(btzwd function 3la class mawgod aslan ally hwa date time zawdt 3lah fuction dh)
 extension MyDateExtension on DateTime {
   DateTime getDateOnly() {
     return DateTime(this.year, this.month, this.day);
@@ -34,4 +34,8 @@ Future<void> deleteTodo(Todo todo){
   DocumentReference<Todo> documentReference =  collectionReference.doc(todo.id);//.d0c()bs bt3ml object gded anma ana badelha alid 3shan a2olha men alobject
   return documentReference.delete();
 
+}
+editisdoneoftask(Todo todo,bool isdone){
+  CollectionReference<Todo> collectionReference =getTodosCollectionWithConverter();
+  collectionReference.doc(todo.id).update({'isDone':isdone});
 }
