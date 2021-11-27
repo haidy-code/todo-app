@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/home/AppConfigProvider.dart';
 import 'bottom_shett/Add_task_bottom_sheet.dart';
 import 'file:///C:/flutter%20projects/todo_app/lib/home/tasks_list/Todo_list_tab.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'settings/Todo_setting_tab.dart';
 
@@ -16,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
         //make navigation bar notched (rounded)
@@ -40,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         //make border of floating action botton
-        shape: StadiumBorder(side: BorderSide(color: Colors.white, width: 4)),
+        shape: StadiumBorder(side: BorderSide(color: Theme.of(context).cardColor, width: 4)),
         //make border of floating action botton
         child: Icon(Icons.add),
         onPressed: () {
@@ -51,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         elevation: 0,
         title: Text(
-          'TO do App',
+          AppLocalizations.of(context)!.app_title,style: TextStyle(color: Theme.of(context).cardColor),
         ),
         centerTitle: false,
       ),

@@ -39,3 +39,12 @@ editisdoneoftask(Todo todo,bool isdone){
   CollectionReference<Todo> collectionReference =getTodosCollectionWithConverter();
   collectionReference.doc(todo.id).update({'isDone':isdone});
 }
+Future<void> editTaskDetails(Todo todo)async {
+  CollectionReference<Todo> collectionReference =getTodosCollectionWithConverter();
+  collectionReference.doc(todo.id).update({
+    'title':todo.title,
+    'description':todo.description,
+    'dateTime':todo.dateTime.getDateOnly().millisecondsSinceEpoch,
+    'isDone':todo.isDone
+  });
+}

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/data/FirebaseUtils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Add_task_bottom_sheet extends StatefulWidget {
   @override
@@ -14,85 +15,93 @@ class _Add_task_bottom_sheetState extends State<Add_task_bottom_sheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8),
-      margin: EdgeInsets.all(8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            'Add new task',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headline3,
-          ),
-          Form(
-            key: formkey,
-            child: Column(
-              children: [
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'tiltle',
-                    labelStyle: Theme.of(context).textTheme.headline4,
-                  ),
-                  validator: (text) {
-                    if (text == null || text.isEmpty) {
-                      return 'please enter todo title';
-                    }
-                    return null;
-                  },
-                  onChanged: (text) {
-                    title = text;
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'details',
-                    labelStyle: Theme.of(context).textTheme.headline4,
-                  ),
-                  minLines: 5,
-                  maxLines: 5,
-                  validator: (text) {
-                    if (text == null || text.isEmpty) {
-                      return 'please enter todo details';
-                    }
-                    return null;
-                  },
-                  onChanged: (text) {
-                    description = text;
-                  },
-                )
-              ],
-            ),
-          ),
-          Container(
-              padding: EdgeInsets.symmetric(vertical: 8),
-              child: Text(
-                'Select Date',
+        color: Theme.of(context).cardColor,
+      child: Container(
+color: Theme.of(context).cardColor,
+        padding: EdgeInsets.all(8),
+        margin: EdgeInsets.all(8),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                AppLocalizations.of(context)!.add_new_task,
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headline3,
-              )),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: InkWell(
-                onTap: () {
-                  showpopupcalender();
-                },
-                child: Text(
-                  ''
-                  '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',
-                  textAlign: TextAlign.center,
-                )),
+              ),
+              Form(
+                key: formkey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context)!.todo_title,
+                        labelStyle: Theme.of(context).textTheme.headline4,
+                      ),
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
+                          return 'please enter todo title';
+                        }
+                        return null;
+                      },
+                      onChanged: (text) {
+                        title = text;
+                      },
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context)!.todo_details,
+                        labelStyle: Theme.of(context).textTheme.headline4,
+                      ),
+                      minLines: 5,
+                      maxLines: 5,
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
+                          return 'please enter todo details';
+                        }
+                        return null;
+                      },
+                      onChanged: (text) {
+                        description = text;
+                      },
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                  padding: EdgeInsets.symmetric(vertical: 8),
+                  child: Text(
+                    AppLocalizations.of(context)!.select_date,
+                    style: Theme.of(context).textTheme.headline3,
+                  )),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: InkWell(
+                    onTap: () {
+                      showpopupcalender();
+                    },
+                    child: Text(
+                      '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',
+                      textAlign: TextAlign.center,style: TextStyle(
+                      color: Theme.of(context).canvasColor
+                    ),
+                    )),
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    addTodo();
+                  },
+                  child: Text(AppLocalizations.of(context)!.add_task))
+            ],
           ),
-          ElevatedButton(
-              onPressed: () {
-                addTodo();
-              },
-              child: Text('Add Task'))
-        ],
+        ),
       ),
     );
   }
 
   Future<void> showpopupcalender() async {
     var newselectedday = await showDatePicker(
+locale: Locale(Localizations.localeOf(context).languageCode),
       context: context,
       initialDate: selectedDate,
       firstDate: DateTime.now(),

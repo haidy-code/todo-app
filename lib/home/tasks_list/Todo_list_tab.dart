@@ -5,6 +5,7 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:todo_app/data/FirebaseUtils.dart';
 import 'package:todo_app/data/Todo.dart';
 import 'package:todo_app/home/tasks_list/Todo_task_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Todo_list_tab extends StatefulWidget {
   @override
@@ -23,6 +24,7 @@ class _Todo_list_tabState extends State<Todo_list_tab> {
       child: Column(
         children: [
           TableCalendar(
+            locale: Localizations.localeOf(context).languageCode,
             calendarFormat: CalendarFormat.week, //3shan yzhr week wa7d
             firstDay: DateTime.now().subtract(Duration(days: 365)),
             lastDay: DateTime.now().add(Duration(days: 365)),
@@ -49,16 +51,19 @@ class _Todo_list_tabState extends State<Todo_list_tab> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 defaultDecoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                defaultTextStyle: TextStyle(color: Colors.black)),
+                defaultTextStyle: TextStyle(color: Theme.of(context).canvasColor)),
             weekendDays: [], // 3shan mai5lesh ay yom mainfa3sh ydas 3lah (ba2olo mafesh weekends)
             daysOfWeekStyle: DaysOfWeekStyle(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).cardColor,
                 borderRadius: BorderRadius.circular(8),
               ),
+            ),
+            headerStyle: HeaderStyle(
+              titleTextStyle: TextStyle(color: Theme.of(context).canvasColor)
             ),
           ),
           //futurebuilder lw onetime read mn data base

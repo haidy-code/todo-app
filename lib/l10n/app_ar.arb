@@ -1,0 +1,16 @@
+{
+  "app_title": "تطبيق To Do",
+  "add_new_task": "اضف مهمة جديدة",
+  "todo_title": "العنوان",
+  "todo_details": "التفاصيل",
+  "select_date": "اختر التاريخ",
+  "add_task": "اضف المهمه",
+  "edit_task": "تعديل المهمه",
+  "save_changes": "احفظ التغييرات",
+  "settings": "الإعدادات",
+  "todolist": "قائمه ToDo",
+  "language": "اللغه",
+  "theme": "النمط",
+  "light": "مضيئ",
+  "dark": "ليلي"
+}

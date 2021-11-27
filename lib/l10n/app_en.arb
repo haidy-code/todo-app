@@ -1,0 +1,17 @@
+{
+  "app_title": "To Do App",
+  "add_new_task": "Add new task",
+  "todo_title": "title",
+  "todo_details": "details",
+  "select_date": "Select Date",
+  "add_task": "Add Task",
+  "edit_task": "Edit Task",
+  "save_changes": "Save changes",
+  "settings": "Settings",
+  "todolist": "ToDo List",
+  "language": "Language",
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark"
+
+}
