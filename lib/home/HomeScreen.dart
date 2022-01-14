@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/home/AppConfigProvider.dart';
+import 'package:todo_app/home/tasks_list/Todo_list_tab.dart';
 import 'bottom_shett/Add_task_bottom_sheet.dart';
-import 'file:///C:/flutter%20projects/todo_app/lib/home/tasks_list/Todo_list_tab.dart';
+
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'settings/Todo_setting_tab.dart';
