@@ -10,6 +10,7 @@ class LanguageButtomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
     return Container(
+      color: Colors.white,
       child: Column(
         children: [
           InkWell(

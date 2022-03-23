@@ -5,7 +5,7 @@ import 'package:todo_app/data/Todo.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:todo_app/home/MythemeData.dart';
 import 'package:todo_app/home/edit_task/EditTask.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class Todo_task_item extends StatelessWidget {
   Todo item;
@@ -81,6 +81,7 @@ class Todo_task_item extends StatelessWidget {
   Widget getitemdesign(bool isdone, BuildContext context) {
     if (isdone) {
       return Container(
+        margin: EdgeInsets.only(top: 8,bottom: 8),
         height:
             120, //adet llcontainer height 3shan hwa kan shail height alitems ally gwah(makontsh 3arfa a3ml space evenly fe items ally gwa coloumn)
 
@@ -136,7 +137,7 @@ class Todo_task_item extends StatelessWidget {
       );
     }
     return Container(
-
+      margin: EdgeInsets.only(top: 8,bottom: 8),
       height:
           120, //adet llcontainer height 3shan hwa kan shail height alitems ally gwah(makontsh 3arfa a3ml space evenly fe items ally gwa coloumn)
 

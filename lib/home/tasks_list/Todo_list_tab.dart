@@ -5,7 +5,7 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:todo_app/data/FirebaseUtils.dart';
 import 'package:todo_app/data/Todo.dart';
 import 'package:todo_app/home/tasks_list/Todo_task_item.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class Todo_list_tab extends StatefulWidget {
   @override
@@ -76,6 +76,7 @@ class _Todo_list_tabState extends State<Todo_list_tab> {
                 .snapshots() ,
             builder:(context, AsyncSnapshot<QuerySnapshot<Todo>> snapshot){
               if (snapshot.hasError) {
+                print('${snapshot.error}');
                 return Text('Error loading todos');
               } else if (snapshot.connectionState ==
                   ConnectionState.waiting) {
